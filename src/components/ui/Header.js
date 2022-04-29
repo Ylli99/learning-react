@@ -1,6 +1,15 @@
 import React from 'react';
-import {AppBar, Toolbar, useScrollTrigger} from "@material-ui/core";
+import {AppBar, ThemeProvider, Toolbar, useScrollTrigger} from "@material-ui/core";
+import {useTheme,Theme} from "@material-ui/core/styles";
+import {lightTheme} from "./Theme";
 
+// const useStyles = makeStyles((theme: Theme) =>
+//     createStyles({
+//         root: {
+//             color:theme.palette.common.orange;
+//         },
+//     }),
+// );
 function ElevationScroll(props) {
     const { children } = props;
     const trigger = useScrollTrigger({
@@ -14,11 +23,14 @@ function ElevationScroll(props) {
 }
 
 export default function Header(props){
+    const theme=useTheme();
     return (
+        <ThemeProvider theme={lightTheme}>
         <ElevationScroll>
             <AppBar position='fixed'>
-                <Toolbar>My first react app</Toolbar>
+                <Toolbar style={{color:theme.palette.primary.main}}>My first react app</Toolbar>
             </AppBar>
         </ElevationScroll>
+            </ThemeProvider>
     );
 }
