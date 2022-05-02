@@ -28,7 +28,7 @@ export default function Header(props){
         <ThemeProvider theme={lightTheme}>
         <ElevationScroll>
             <AppBar position='fixed'>
-                <Toolbar style={{color:theme.palette.primary.main}}>My first react app</Toolbar>
+                <Toolbar style={{color:theme.palette.secondary.main}}>My first react app</Toolbar>
             </AppBar>
         </ElevationScroll>
             </ThemeProvider>
