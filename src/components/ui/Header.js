@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppBar, ThemeProvider, useScrollTrigger, makeStyles, Toolbar} from "@material-ui/core";
+import {AppBar, ThemeProvider, useScrollTrigger, Toolbar, Tab, Tabs, makeStyles} from "@material-ui/core";
 import {lightTheme} from "./Theme";
 import logo from '../../assets/logo.svg'
 
@@ -23,7 +23,15 @@ const useStyles = makeStyles(theme => {
         },
         logo: {
             height: "7em"
-        }
+        },
+        tabContainer: {
+            marginLeft: 'auto'
+        },
+        tab: {
+            ...lightTheme.typography.tab,
+            minWidth: 10,
+            marginLeft: "25px",
+        },
     });
 })
 
@@ -36,6 +44,13 @@ export default function Header(props){
                 <AppBar position='fixed' color="primary">
                     <Toolbar disableGutters>
                         <img alt= "company logo" src={logo} className={classes.logo}/>
+                        <Tabs className={classes.tabContainer}>
+                            <Tab className={classes.tab} label="Home"/>
+                            <Tab className={classes.tab} label="Services"/>
+                            <Tab className={classes.tab} label="The Revolution"/>
+                            <Tab className={classes.tab} label="About us"/>
+                            <Tab className={classes.tab} label="Contact us"/>
+                        </Tabs>
                     </Toolbar>
                 </AppBar>
             </ElevationScroll>
