@@ -1,6 +1,7 @@
 import React from 'react';
-import {AppBar, ThemeProvider, Toolbar, useScrollTrigger} from "@material-ui/core";
+import {AppBar, ThemeProvider, useScrollTrigger, makeStyles, Toolbar} from "@material-ui/core";
 import {lightTheme} from "./Theme";
+import logo from '../../assets/logo.svg'
 
 function ElevationScroll(props) {
     const { children } = props;
@@ -14,14 +15,31 @@ function ElevationScroll(props) {
     });
 }
 
+const useStyles = makeStyles(theme => {
+    return ({
+        toolbarMargin: {
+            ...theme.mixins.toolbar,
+            marginBottom: "3em"
+        },
+        logo: {
+            height: "7em"
+        }
+    });
+})
+
 export default function Header(props){
+    const classes = useStyles();
+
     return (
         <ThemeProvider theme={lightTheme}>
-        <ElevationScroll>
-            <AppBar position='fixed'>
-                <Toolbar>My first react app</Toolbar>
-            </AppBar>
-        </ElevationScroll>
-            </ThemeProvider>
+            <ElevationScroll>
+                <AppBar position='fixed' color="primary">
+                    <Toolbar disableGutters>
+                        <img alt= "company logo" src={logo} className={classes.logo}/>
+                    </Toolbar>
+                </AppBar>
+            </ElevationScroll>
+            <div className={classes.toolbarMargin}/>
+        </ThemeProvider>
     );
 }
