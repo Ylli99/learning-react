@@ -10,14 +10,14 @@ function App() {
             <Header/>
             <Routes>
                 <Route path="/" element={<div>Home</div>}/>
-                <Route path="/services" element={<div>services</div>}/>
-                <Route path="/customsoftware" element={<div>custom software</div>}/>
-                <Route path="/mobileapps" element={<div>mobile apps</div>}/>
-                <Route path="/websites" element={<div>websites</div>}/>
-                <Route path="/revolution" element={<div>revolution</div>}/>
-                <Route path="/about " element={<div>about</div>}/>
-                <Route path="/contact" element={<div>contact</div>}/>
-                <Route path="/estimate " element={<div>estimate</div>}/>
+                <Route path="/services" element={<div>Services</div>}/>
+                <Route path="/customsoftware" element={<div>Custom Software</div>}/>
+                <Route path="/mobileapps" element={<div>Mobile Apps</div>}/>
+                <Route path="/websites" element={<div>Websites</div>}/>
+                <Route path="/revolution" element={<div>The Revolution</div>}/>
+                <Route path="/about" element={<div>About Us</div>}/>
+                <Route path="/contact" element={<div>Contact Us</div>}/>
+                <Route path="/estimate" element={<div>Estimate</div>}/>
             </Routes>
         </BrowserRouter>
     </ThemeProvider>);

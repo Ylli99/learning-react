@@ -47,7 +47,6 @@ const useStyles = makeStyles(theme => ({
             [theme.breakpoints.down("xs")]: {
                 marginBottom: "1.25em"
             }
-
         },
         logo: {
             height: "8em",
@@ -110,7 +109,12 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: lightTheme.palette.common.orange
         },
         drawerItemSelected: {
-            opacity: 1
+            "& .MuiListItemText-root": {
+                opacity: 1
+            }
+        },
+        appBar: {
+            zIndex: theme.zIndex.modal + 1
         }
     })
 );
@@ -207,9 +211,10 @@ export default function Header(props) {
                   MenuListProps={{onMouseLeave: handleClose}}
                   classes={{paper: classes.menu}}
                   elevation={0}
-                  keepMounted>
+                  keepMounted
+                  style={{zIndex: 1302}}>
                 {menuOptions.map((option, i) => (
-                    <MenuItem key={option}
+                    <MenuItem key={`${option}${i}`}
                               component={Link}
                               to={option.link}
                               classes={{root: classes.menuItem}}
@@ -234,6 +239,7 @@ export default function Header(props) {
                              onClose={() => setOpenDrawer(false)}
                              onOpen={() => setOpenDrawer(true)}
                              classes={{paper: classes.drawer}}>
+                <div className={classes.toolbarMargin}/>
                 <List disablePadding>
                     {routes.map(route => (
                         <ListItem divider
@@ -241,19 +247,22 @@ export default function Header(props) {
                                   component={Link}
                                   to={route.link}
                                   selected={value === route.activeIndex}
+                                  classes={{selected: classes.drawerItemSelected}}
                                   key={`${route}${route.activeIndex}`}
                                   onClick={() => {setOpenDrawer(false); setValue(route.activeIndex)}}>
-                            <ListItemText className={value === route.activeIndex ? [classes.drawerItem, classes.drawerItemSelected] :classes.drawerItem} disableTypography>{route.name}</ListItemText>
+                            <ListItemText className={value === route.activeIndex ? [classes.drawerItem, classes.drawerItemSelected] :classes.drawerItem}
+                                    disableTypography>{route.name}
+                            </ListItemText>
                         </ListItem>
                     ))}
                     <ListItem selected={value === 5}
-                              className={classes.drawerItemEstimate}
+                              classes={{root: classes.drawerItemEstimate, selected: classes.drawerItemSelected}}
                               onClick={() => {setOpenDrawer(false); setValue(5)}}
                               divider
                               button
                               component={Link}
                               to="/estimate">
-                        <ListItemText className={value === 5 ? [classes.drawerItemSelected, classes.drawerItem] : classes.drawerItem} disableTypography>Free Estimate</ListItemText>
+                        <ListItemText className={classes.drawerItem} disableTypography>Free Estimate</ListItemText>
                     </ListItem>
                 </List>
             </SwipeableDrawer>
@@ -266,7 +275,7 @@ export default function Header(props) {
     return (
         <ThemeProvider theme={lightTheme}>
             <ElevationScroll>
-                <AppBar position='fixed'>
+                <AppBar position='fixed' className={classes.appBar}>
                     <Toolbar disableGutters>
                         <Button component={Link} to="/" className={classes.logoContainer} onClick={handleChange}
                                 disableRipple>
@@ -276,6 +285,7 @@ export default function Header(props) {
                     </Toolbar>
                 </AppBar>
             </ElevationScroll>
+            <div className={classes.toolbarMargin}/>
         </ThemeProvider>
     );
 }
