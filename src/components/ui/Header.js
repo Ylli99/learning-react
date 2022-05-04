@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {
     AppBar,
     Button, IconButton,
@@ -77,6 +77,10 @@ const useStyles = makeStyles(theme => ({
             marginLeft: "50px",
             marginRight: "25px",
             height: "45px",
+            "&:hover": {
+                backgroundColor: lightTheme.palette.secondary.light
+            }
+
         },
         menu: {
             backgroundColor: lightTheme.palette.common.blue,
@@ -150,19 +154,19 @@ export default function Header(props) {
         setOpenMenu(false)
     }
 
-    const menuOptions = [{name: "Services", link: "/services", activeIndex: 1, selectedIndex: 0},
+    const menuOptions = useMemo(() => [{name: "Services", link: "/services", activeIndex: 1, selectedIndex: 0},
         {name: "Custom Software Development", link: "/customsoftware", activeIndex: 1, selectedIndex: 1},
-        {name: "Mobile App Development", link: "/mobileapps", activeIndex: 1, selectedIndex: 2},
-        {name: "Web Site Development", link: "/websites", activeIndex: 1, selectedIndex: 3}]
+        {name: "iOS/Android App Development", link: "/mobileapps", activeIndex: 1, selectedIndex: 2},
+        {name: "Web Site Development", link: "/websites", activeIndex: 1, selectedIndex: 3}], []);
 
-    const routes = [{name: "Home", link: "/", activeIndex: 0},
+    const routes = useMemo(() => [{name: "Home", link: "/", activeIndex: 0},
         {name: "Services", link: "/services", activeIndex: 1,
             ariaOwns: anchorEl ? "simple-menu" : undefined,
             ariaPopup: anchorEl ? "true" : undefined,
             mouseOver: event => handleClick(event)},
         {name: "The Revolution", link: "/revolution", activeIndex: 2},
         {name: "About Us", link: "/about", activeIndex: 3},
-        {name: "Contact Us", link: "/contact", activeIndex: 4}]
+        {name: "Contact Us", link: "/contact", activeIndex: 4}], [anchorEl]);
 
     useEffect(() => {
         [...menuOptions, ...routes].forEach(route => {
@@ -179,7 +183,7 @@ export default function Header(props) {
                     break;
             }
         })
-    }, [props]);
+    }, [props, props.selectedIndex, menuOptions, routes]);
 
     const tabs = (
         <React.Fragment>
