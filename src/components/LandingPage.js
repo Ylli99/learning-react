@@ -1,6 +1,6 @@
 import React from "react";
 import Lottie from 'react-lottie';
-import {makeStyles, Grid, Button, Typography, useTheme, useMediaQuery } from "@material-ui/core";
+import {makeStyles, Grid, Button, Typography, useTheme, useMediaQuery, Card, CardContent } from "@material-ui/core";
 import ButtonArrow from "./ui/ButtonArrow";
 
 import animationData from '../animations/landinganimation/data';
@@ -8,6 +8,7 @@ import customSoftwareIcon from '../assets/Custom Software Icon.svg';
 import {lightTheme} from "./ui/Theme";
 import mobileAppsIcons from '../assets/mobileIcon.svg';
 import websitesIcon from '../assets/websiteIcon.svg';
+import revolutionBackground from '../assets/repeatingBackground.svg'
 
 const useStyles = makeStyles(theme => ({
     typo: {
@@ -92,6 +93,31 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.down("sm")]: {
             padding: 25
         }
+    },
+    revolutionBackground: {
+        backgroundImage: `url(${revolutionBackground})`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        height: "100%",
+        width: "100%"
+    },
+    revolutionCard: {
+        position: "absolute",
+        boxShadow: theme.shadows[10],
+        bordedRadius: 15,
+        padding: "10em",
+        [theme.breakpoints.down("sm")]: {
+            paddingTop: "8em",
+            paddingBottom: "8em",
+            paddingLeft: 0,
+            paddingRight: 0,
+            borderRadius: 0,
+            width: "100%"
+        }
+    },
+    revolutionText: {
+        ...lightTheme.typography.h3
     }
 }))
 
@@ -102,7 +128,7 @@ export default function LandingPage() {
 
     const defaultOptions = {
         loop: true,
-        autoplay: true,
+        autoplay: false,
         animationData: animationData,
         rendererSettings: {
             preserveAspectRatio: 'xMidYMid slice'
@@ -196,6 +222,31 @@ export default function LandingPage() {
                     <Grid item>
                         <img alt="website icon" src={websitesIcon} className={classes.icon}/>
                     </Grid>
+                </Grid>
+            </Grid>
+            <Grid item>
+                <Grid container style={{height: "100em", marginTop: "12em"}} alignItems="center" justify="center">
+                    <Card className={classes.revolutionCard}>
+                        <CardContent style={{textAlign: "center"}}>
+                            <Grid container direction="column">
+                                <Grid item>
+                                    <Typography className={classes.revolutionText} gutterBottom>
+                                        The Revolution
+                                    </Typography>
+                                </Grid>
+                                <Grid item>
+                                    <Typography className={classes.subtitle}>
+                                        Visionary insights coupled with cutting-edge technology is a recipe for revolution.
+                                    </Typography>
+                                    <Button variant="outlined" className={classes.learnButtonHero}>
+                                        <span style={{marginRight: 10}}>Learn More</span>
+                                        <ButtonArrow width={15} height={15} fill={lightTheme.palette.common.blue}/>
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </CardContent>
+                    </Card>
+                    <div className={classes.revolutionBackground}/>
                 </Grid>
             </Grid>
         </Grid>
