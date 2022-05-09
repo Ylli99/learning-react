@@ -17,17 +17,17 @@ function App() {
                 <Header value={value} setValue={setValue} selectedIndex={selectedIndex}
                         setSelectedIndex={setSelectedIndex}/>
                 <Routes>
-                    <Route path="/" element={<LandingPage/>}/>
-                    <Route path="/services" element={<div>Services</div>}/>
-                    <Route path="/customsoftware" element={<div>Custom Software</div>}/>
-                    <Route path="/mobileapps" element={<div>Mobile Apps</div>}/>
-                    <Route path="/websites" element={<div>Websites</div>}/>
-                    <Route path="/revolution" element={<div>The Revolution</div>}/>
-                    <Route path="/about" element={<div>About Us</div>}/>
-                    <Route path="/contact" element={<div>Contact Us</div>}/>
-                    <Route path="/estimate" element={<div>Estimate</div>}/>
+                    <Route exact path="/" element={<LandingPage setValue={setValue} setSelectedIndex={setSelectedIndex}/>}/>
+                    <Route exact path="/services" element={<div>Services</div>}/>
+                    <Route exact path="/customsoftware" element={<div>Custom Software</div>}/>
+                    <Route exact path="/mobileapps" element={<div>Mobile Apps</div>}/>
+                    <Route exact path="/websites" element={<div>Websites</div>}/>
+                    <Route exact path="/revolution" element={<div>The Revolution</div>}/>
+                    <Route exact path="/about" element={<div>About Us</div>}/>
+                    <Route exact path="/contact" element={<div>Contact Us</div>}/>
+                    <Route exact path="/estimate" element={<div>Estimate</div>}/>
                 </Routes>
-                <Footer value={value} setValue={setValue} selectedIndex={selectedIndex}
+                <Footer setValue={setValue}
                         setSelectedIndex={setSelectedIndex}/>
             </BrowserRouter>
     </ThemeProvider>);
