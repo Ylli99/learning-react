@@ -15,6 +15,9 @@ export const lightTheme = createMuiTheme({
         },
         secondary: {
             main: arcOrange
+        },
+        third: {
+            main: arcGrey
         }
     },
     typography: {

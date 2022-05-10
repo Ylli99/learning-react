@@ -5,7 +5,6 @@ import ButtonArrow from "./ui/ButtonArrow";
 import CallToAction from "./ui/CallToAction";
 import {Link} from 'react-router-dom';
 
-import App from "../App";
 import animationData from '../animations/landinganimation/data';
 import customSoftwareIcon from '../assets/Custom Software Icon.svg';
 import {lightTheme} from "./ui/Theme";
