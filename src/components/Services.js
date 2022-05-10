@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom'
-import {makeStyles, Grid, Typography, Button, useMediaQuery, useTheme} from "@material-ui/core";
+import {makeStyles, Grid, Typography, Button, useMediaQuery, useTheme, IconButton, Hidden} from "@material-ui/core";
 import ButtonArrow from "./ui/ButtonArrow";
 import {lightTheme} from "./ui/Theme";
 import customSoftwareIcon from "../assets/Custom Software Icon.svg";
@@ -8,6 +8,8 @@ import mobileAppsIcons from "../assets/mobileIcon.svg";
 import websitesIcon from "../assets/websiteIcon.svg";
 import revolutionBackground from "../assets/repeatingBackground.svg";
 import infoBackground from "../assets/infoBackground.svg";
+import forwardArrow from "../assets/forwardArrow.svg";
+import backArrow from "../assets/backArrow.svg";
 
 const useStyles = makeStyles(theme => ({
     typo: {
@@ -120,6 +122,8 @@ const useStyles = makeStyles(theme => ({
     },
     revolutionText: {
         ...lightTheme.typography.h3
+    } , arrowContainer: {
+        marginTop: "0.5em"
     },
     informationBackground: {
         backgroundImage: `url(${infoBackground})`,
@@ -141,6 +145,26 @@ export default function Services(props) {
         <Grid container direction="column">
             <Grid item style={{marginLeft: matchesSM ? 0 :"5em", marginTop: matchesSM ? "1em" : "2em"}}>
                 <Typography align={matchesSM ? "center" : undefined} className={classes.typo} gutterBottom >Services</Typography>
+            </Grid>
+            <Grid item container direction="row">
+                <Hidden mdDown>
+                    <Grid item style={{marginLeft:"4.5em", marginRight: "5em"}}>
+                        <Grid item className={classes.arrowContainer}>
+                            <IconButton onClick={() => props.setSelectedIndex(3)} style={{backgroundColor: "transparent"}}
+                                        component={Link} to="/websites">
+                                <img src={backArrow} alt={"Back to Services Page"}/>
+                            </IconButton>
+                        </Grid>
+                    </Grid>
+                    <Grid item>
+                        <Grid item className={classes.arrowContainer}>
+                            <IconButton onClick={() => props.setSelectedIndex(1)} style={{backgroundColor: "transparent"}}
+                                        component={Link} to="/customsoftware">
+                                <img src={forwardArrow} alt="Forward to Custom Software Development Page"/>
+                            </IconButton>
+                        </Grid>
+                    </Grid>
+                </Hidden>
             </Grid>
             <Grid item> {/*-----iOS/Android Block-----*/}
                 <Grid container direction="row" className={classes.serviceContainer}

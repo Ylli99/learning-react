@@ -7,6 +7,8 @@ import LandingPage from "./components/LandingPage";
 import {lightTheme} from "./components/ui/Theme";
 import Services from './components/Services';
 import CustomSoftware from './components/CustomSoftware'
+import MobileApps from "./components/MobileApps";
+import Websites from "./components/Websites";
 
 function App() {
     const [selectedIndex, setSelectedIndex] = useState(0);
@@ -21,9 +23,9 @@ function App() {
                 <Routes>
                     <Route exact path="/" element={<LandingPage setValue={setValue} setSelectedIndex={setSelectedIndex}/>}/>
                     <Route exact path="/services" element={<Services setValue={setValue} setSelectedIndex={setSelectedIndex}/>}/>
-                    <Route exact path="/customsoftware" element={<CustomSoftware/>}/>
-                    <Route exact path="/mobileapps" element={<div>Mobile Apps</div>}/>
-                    <Route exact path="/websites" element={<div>Websites</div>}/>
+                    <Route exact path="/customsoftware" element={<CustomSoftware setValue={setValue} setSelectedIndex={setSelectedIndex}/>}/>
+                    <Route exact path="/mobileapps" element={<MobileApps setValue={setValue} setSelectedIndex={setSelectedIndex}/>}/>
+                    <Route exact path="/websites" element={<Websites setValue={setValue} setSelectedIndex={setSelectedIndex}/>}/>
                     <Route exact path="/revolution" element={<div>The Revolution</div>}/>
                     <Route exact path="/about" element={<div>About Us</div>}/>
                     <Route exact path="/contact" element={<div>Contact Us</div>}/>

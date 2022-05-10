@@ -1,5 +1,5 @@
 import React from 'react'
-import {Grid, IconButton, makeStyles, Typography, Hidden, useMediaQuery, useTheme} from "@material-ui/core";
+import {Grid, Hidden, IconButton, makeStyles, Typography, useMediaQuery, useTheme} from "@material-ui/core";
 import Lottie from 'react-lottie';
 
 
@@ -75,7 +75,8 @@ export default function CustomSoftware(props) {
 
     return (
         <Grid container direction="column">
-            <Grid item container direction="row" style={{marginTop: matchesXS ? "1em" : "2em"}} justify={matchesMD ? "center" : undefined} className={classes.rowContainer}>
+            <Grid item container direction="row" style={{marginTop: matchesXS ? "1em" : "2em"}}
+                  justify={matchesMD ? "center" : undefined} className={classes.rowContainer}>
                 <Hidden mdDown>
                     <Grid item className={classes.arrowContainer} style={{marginRight: "1em", marginLeft: "-3.5em"}}>
                         <IconButton onClick={() => props.setSelectedIndex(0)} style={{backgroundColor: "transparent"}}
@@ -86,7 +87,8 @@ export default function CustomSoftware(props) {
                 </Hidden>
                 <Grid item container direction="column" className={classes.heading}>
                     <Grid item>
-                        <Typography align={matchesMD ? "center" : undefined} className={classes.typo}>Custom Software Development</Typography>
+                        <Typography align={matchesMD ? "center" : undefined} className={classes.typo}>Custom Software
+                            Development</Typography>
                     </Grid>
                     <Grid item>
                         <Typography align={matchesMD ? "center" : undefined} className={classes.body1} paragraph>
@@ -110,15 +112,16 @@ export default function CustomSoftware(props) {
                     </Grid>
                 </Grid>
                 <Hidden mdDown>
-                <Grid item className={classes.arrowContainer}>
-                    <IconButton onClick={() => props.setSelectedIndex(2)} style={{backgroundColor: "transparent"}}
-                                component={Link} to="/mobileapps">
-                        <img src={forwardArrow} alt="Forward to iOS/Android App Development Page"/>
-                    </IconButton>
-                </Grid>
+                    <Grid item className={classes.arrowContainer}>
+                        <IconButton onClick={() => props.setSelectedIndex(2)} style={{backgroundColor: "transparent"}}
+                                    component={Link} to="/mobileapps">
+                            <img src={forwardArrow} alt="Forward to iOS/Android App Development Page"/>
+                        </IconButton>
+                    </Grid>
                 </Hidden>
             </Grid>
-            <Grid item container direction="row" justify="center" style={{marginTop: "15em", marginBottom: "20em"}} className={classes.rowContainer}>
+            <Grid item container direction="row" justify="center" style={{marginTop: "15em", marginBottom: "20em"}}
+                  className={classes.rowContainer}>
                 <Grid item container direction="column" md alignItems="center" style={{maxWidth: "40em"}}>
                     <Grid item>
                         <Typography className={classes.typo1}>Save Energy</Typography>
@@ -127,7 +130,11 @@ export default function CustomSoftware(props) {
                         <img src={lightbulb} alt={"lightbulb"}/>
                     </Grid>
                 </Grid>
-                <Grid item container direction="column" md alignItems="center" style={{maxWidth: "40em", marginTop: matchesSM ? "10em" : 0, marginBottom: matchesSM ? "10em" : 0}}>
+                <Grid item container direction="column" md alignItems="center" style={{
+                    maxWidth: "40em",
+                    marginTop: matchesSM ? "10em" : 0,
+                    marginBottom: matchesSM ? "10em" : 0
+                }}>
                     <Grid item>
                         <Typography className={classes.typo1}>Save Time</Typography>
                     </Grid>
@@ -144,11 +151,14 @@ export default function CustomSoftware(props) {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item container direction={matchesMD ? "column":"row"} justify={"space-between"} alignItems={matchesMD ? "center" : undefined}  className={classes.rowContainer}>
-                <Grid item container className={classes.itemContainer} direction={matchesSM ? "column" : "row"} style={{marginBottom: matchesMD ? "15em" : 0}} md>
+            <Grid item container direction={matchesMD ? "column" : "row"} justify={"space-between"}
+                  alignItems={matchesMD ? "center" : undefined} className={classes.rowContainer}>
+                <Grid item container className={classes.itemContainer} direction={matchesSM ? "column" : "row"}
+                      style={{marginBottom: matchesMD ? "15em" : 0}} md>
                     <Grid item container direction="column" md>
                         <Grid item>
-                            <Typography align={matchesSM ? "center" : undefined} className={classes.typo1}>Digital Documents & Data</Typography>
+                            <Typography align={matchesSM ? "center" : undefined} className={classes.typo1}>Digital
+                                Documents & Data</Typography>
                         </Grid>
                         <Grid item>
                             <Typography className={classes.body1} paragraph align={matchesSM ? "center" : undefined}>
@@ -175,50 +185,62 @@ export default function CustomSoftware(props) {
                     </Grid>
                     <Grid item container direction="column" md>
                         <Grid item>
-                            <Typography className={classes.typo1}  align={matchesSM ? "center" : "right"}>Scale</Typography>
+                            <Typography className={classes.typo1}
+                                        align={matchesSM ? "center" : "right"}>Scale</Typography>
                         </Grid>
                         <Grid item>
                             <Typography className={classes.body1} align={matchesSM ? "center" : "right"} paragraph>
-                                Whether you’re a large brand, just getting started, or taking off right now, our application
+                                Whether you’re a large brand, just getting started, or taking off right now, our
+                                application
                                 architecture ensures pain-free growth and reliability.
                             </Typography>
                         </Grid>
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item container direction="row" style={{marginTop:"20em", marginBottom:"20em"}}  className={classes.rowContainer}>
+            <Grid item container direction="row" style={{marginTop: "20em", marginBottom: "20em"}}
+                  className={classes.rowContainer}>
                 <Grid item container direction="column" alignItems="center">
                     <Grid item>
-                        <img src={roots} alt="tree with roots extending out" height={matchesSM ? "300em" : "450em"} width={matchesSM ? "300em" : "450em"}/>
+                        <img src={roots} alt="tree with roots extending out" height={matchesSM ? "300em" : "450em"}
+                             width={matchesSM ? "300em" : "450em"}/>
                     </Grid>
                     <Grid item className={classes.itemContainer}>
-                        <Typography align="center" className={classes.typo1} gutterBottom>Root-Cause Analysis</Typography>
+                        <Typography align="center" className={classes.typo1} gutterBottom>Root-Cause
+                            Analysis</Typography>
                         <Typography align="center" className={classes.body1} paragraph>
                             Many problems are merely symptoms of larger, underlying issues.
                         </Typography>
                         <Typography align="center" className={classes.body1} paragraph>
-                            We can help you thoroughly examine all areas of your business to develop a holistic plan for the
+                            We can help you thoroughly examine all areas of your business to develop a holistic plan for
+                            the
                             most effective implementation of technology.
                         </Typography>
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid className={classes.rowContainer} item container direction={matchesMD ? "column":"row"} justify={"space-between"} alignItems={matchesMD ? "center" : undefined} justify={"space-between"} style={{marginBottom: "20em"}}>
-                <Grid item container className={classes.itemContainer} direction={matchesSM ? "column" : "row"} style={{marginBottom: matchesMD ? "15em" : 0}} md>
+            <Grid className={classes.rowContainer} item container direction={matchesMD ? "column" : "row"}
+                  justify={"space-between"} alignItems={matchesMD ? "center" : undefined} justify={"space-between"}
+                  style={{marginBottom: "20em"}}>
+                <Grid item container className={classes.itemContainer} direction={matchesSM ? "column" : "row"}
+                      style={{marginBottom: matchesMD ? "15em" : 0}} md>
                     <Grid item container direction="column" md>
                         <Grid item>
-                            <Typography align={matchesSM ? "center" : undefined} className={classes.typo1}>Automation</Typography>
+                            <Typography align={matchesSM ? "center" : undefined}
+                                        className={classes.typo1}>Automation</Typography>
                         </Grid>
                         <Grid item>
                             <Typography className={classes.body1} paragraph align={matchesSM ? "center" : undefined}>
                                 Why waste time when you don’t have to?
                             </Typography>
                             <Typography className={classes.body1} paragraph align={matchesSM ? "center" : undefined}>
-                                We can help you identify processes with time or event based actions which can now easily be
+                                We can help you identify processes with time or event based actions which can now easily
+                                be
                                 automated.
                             </Typography>
                             <Typography className={classes.body1} paragraph align={matchesSM ? "center" : undefined}>
-                                Increasing efficiency increases profits, leaving you more time to focus on your business,
+                                Increasing efficiency increases profits, leaving you more time to focus on your
+                                business,
                                 not busywork
                             </Typography>
                         </Grid>
@@ -233,7 +255,8 @@ export default function CustomSoftware(props) {
                     </Grid>
                     <Grid item container direction="column" md>
                         <Grid item>
-                            <Typography className={classes.typo1} align={matchesSM ? "center" : "right"}>User Experience Design</Typography>
+                            <Typography className={classes.typo1} align={matchesSM ? "center" : "right"}>User Experience
+                                Design</Typography>
                         </Grid>
                         <Grid item>
                             <Typography className={classes.body1} align={matchesSM ? "center" : "right"} paragraph>
@@ -243,7 +266,8 @@ export default function CustomSoftware(props) {
                                 So why are so many pieces of software complicated, confusing, and frustrating?
                             </Typography>
                             <Typography className={classes.body1} align={matchesSM ? "center" : "right"} paragraph>
-                                By prioritizing users and the real ways they interact with technology we’re able to develop
+                                By prioritizing users and the real ways they interact with technology we’re able to
+                                develop
                                 unique, personable experiences that solve problems rather than create new ones.
                             </Typography>
                         </Grid>
