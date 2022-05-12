@@ -45,6 +45,12 @@ export const lightTheme = createMuiTheme({
             color: arcBlue,
             fontWeight: 700
         },
+        revolution: {
+            fontFamily: "Pacifico",
+            fontSize: "2.425rem",
+            color: arcBlue,
+            fontWeight: 700
+        },
         subtitle1: {
             fontSize: "1.25rem",
             fontWeight: 300,
@@ -69,6 +75,11 @@ export const lightTheme = createMuiTheme({
             fontSize: "1rem",
             textTransform: "none",
             color: "white"
+        },
+        caption: {
+            fontSize:"1rem",
+            fontWeight:300,
+            color: arcGrey
         }
     }
 });

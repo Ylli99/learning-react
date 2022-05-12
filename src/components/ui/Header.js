@@ -21,7 +21,7 @@ import {lightTheme} from "./Theme";
 import {Link} from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu'
 
-import logo from '../../assets/logo.svg'
+import logo from '../../assets/logo.PNG'
 
 function ElevationScroll(props) {
     const {children} = props;
@@ -49,6 +49,7 @@ const useStyles = makeStyles(theme => ({
             }
         },
         logo: {
+            fontFamily: "Raleway",
             height: "8em",
             [theme.breakpoints.down("md")]: {
                 height: "7em"
@@ -285,7 +286,7 @@ export default function Header(props) {
                     <Toolbar disableGutters>
                         <Button component={Link} to="/" className={classes.logoContainer} onClick={handleChange}
                                 disableRipple>
-                            <img alt="company logo" src={logo} className={classes.logo}/>
+                            <img src={logo} alt="company logo" className={classes.logo}/>
                         </Button>
                         {matches ? drawer : tabs}
                     </Toolbar>

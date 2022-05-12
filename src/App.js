@@ -9,6 +9,9 @@ import Services from './components/Services';
 import CustomSoftware from './components/CustomSoftware'
 import MobileApps from "./components/MobileApps";
 import Websites from "./components/Websites";
+import Revolution from "./components/Revolution";
+import About from "./components/About";
+import Contact from "./components/Contact";
 
 function App() {
     const [selectedIndex, setSelectedIndex] = useState(0);
@@ -26,9 +29,9 @@ function App() {
                     <Route exact path="/customsoftware" element={<CustomSoftware setValue={setValue} setSelectedIndex={setSelectedIndex}/>}/>
                     <Route exact path="/mobileapps" element={<MobileApps setValue={setValue} setSelectedIndex={setSelectedIndex}/>}/>
                     <Route exact path="/websites" element={<Websites setValue={setValue} setSelectedIndex={setSelectedIndex}/>}/>
-                    <Route exact path="/revolution" element={<div>The Revolution</div>}/>
-                    <Route exact path="/about" element={<div>About Us</div>}/>
-                    <Route exact path="/contact" element={<div>Contact Us</div>}/>
+                    <Route exact path="/revolution" element={<Revolution setValue={setValue} setSelectedIndex={setSelectedIndex}/>}/>
+                    <Route exact path="/about" element={<About setValue={setValue} setSelectedIndex={setSelectedIndex}/>}/>
+                    <Route exact path="/contact" element={<Contact setValue={setValue} setSelectedIndex={setSelectedIndex}/>}/>
                     <Route exact path="/estimate" element={<div>Estimate</div>}/>
                 </Routes>
                 <Footer setValue={setValue}
