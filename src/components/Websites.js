@@ -2,7 +2,6 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {Grid, Hidden, IconButton, makeStyles, Typography, useMediaQuery, useTheme} from "@material-ui/core";
 import backArrow from "../assets/backArrow.svg";
-import {lightTheme} from "./ui/Theme";
 import forwardArrow from "../assets/forwardArrow.svg";
 import analytics from "../assets/analytics.svg"
 import ecommerce from "../assets/ecommerce.svg"
@@ -12,19 +11,19 @@ import CallToAction from "./ui/CallToAction";
 
 const useStyles = makeStyles(theme => ({
     typo: {
-        ...lightTheme.typography.h2
+        ...theme.typography.h2
     }, typo1: {
-        ...lightTheme.typography.h4
+        ...theme.typography.h4
     }, typo2: {
-        ...lightTheme.typography.subtitle1
+        ...theme.typography.subtitle1
     }, sub2: {
-        ...lightTheme.typography.subtitle2
+        ...theme.typography.subtitle2
     }, heading: {
         maxWidth: "40em"
     }, arrowContainer: {
         marginTop: "0.5em"
     }, body1: {
-        fontSize: "1.25rem", color: lightTheme.palette.third.main, fontWeight: "300"
+        fontSize: "1.25rem", color: theme.palette.third.main, fontWeight: "300"
     }, rowContainer: {
         paddingLeft: "5em", paddingRight: "5em", [theme.breakpoints.down("sm")]: {
             paddingLeft: "1.5em", paddingRight: "1.5em"
@@ -81,11 +80,13 @@ export default function Websites(props) {
                 </Grid>
             </Hidden>
         </Grid>
-        <Grid item container direction={matchesSM ? "column":"row"} alignItems="center" className={classes.rowContainer} style={{marginTop:'15em'}}>
+        <Grid item container direction={matchesSM ? "column" : "row"} alignItems="center"
+              className={classes.rowContainer} style={{marginTop: '15em'}}>
             <Grid item>
                 <Grid item container direction="column">
                     <Grid item>
-                        <Typography align={matchesSM ? "center" : undefined} className={classes.typo1} gutterBottom>Analytics</Typography>
+                        <Typography align={matchesSM ? "center" : undefined} className={classes.typo1}
+                                    gutterBottom>Analytics</Typography>
                     </Grid>
                     <Grid item>
                         <img style={{marginLeft: "-2.75em"}} src={analytics}
@@ -101,8 +102,8 @@ export default function Websites(props) {
                 </Typography>
             </Grid>
         </Grid>
-        <Grid item container direction={matchesSM ? "column":"row"} justify="flex-end" alignItems="center"
-              className={classes.rowContainer} style={{marginTop:"15em", marginBottom:"15em"}}>
+        <Grid item container direction={matchesSM ? "column" : "row"} justify="flex-end" alignItems="center"
+              className={classes.rowContainer} style={{marginTop: "15em", marginBottom: "15em"}}>
             <Grid item>
                 <Grid item container direction="column">
                     <Grid item>
@@ -122,11 +123,13 @@ export default function Websites(props) {
                 </Typography>
             </Grid>
         </Grid>
-        <Grid item container direction={matchesSM ? "column":"row"} alignItems="center" className={classes.rowContainer}>
+        <Grid item container direction={matchesSM ? "column" : "row"} alignItems="center"
+              className={classes.rowContainer}>
             <Grid item>
                 <Grid item container direction="column">
                     <Grid item>
-                        <Typography align={matchesSM ? "center" : undefined} className={classes.typo1} gutterBottom>Outreach</Typography>
+                        <Typography align={matchesSM ? "center" : undefined} className={classes.typo1}
+                                    gutterBottom>Outreach</Typography>
                     </Grid>
                     <Grid item>
                         <img src={outreach}
@@ -141,12 +144,13 @@ export default function Websites(props) {
                 </Typography>
             </Grid>
         </Grid>
-        <Grid item container direction={matchesSM ? "column":"row"} justify="flex-end" alignItems="center"
-              className={classes.rowContainer} style={{marginTop:"15em", marginBottom:"15em"}}>
+        <Grid item container direction={matchesSM ? "column" : "row"} justify="flex-end" alignItems="center"
+              className={classes.rowContainer} style={{marginTop: "15em", marginBottom: "15em"}}>
             <Grid item>
                 <Grid item container direction="column">
                     <Grid item>
-                        <Typography align="center" className={classes.typo1} gutterBottom>Search Engine <br/> Optimization</Typography>
+                        <Typography align="center" className={classes.typo1} gutterBottom>Search
+                            Engine <br/> Optimization</Typography>
                     </Grid>
                     <Grid item>
                         <img src={seo} alt="website standing on winner's podium"/>

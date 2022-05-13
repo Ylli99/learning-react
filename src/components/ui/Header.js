@@ -17,7 +17,6 @@ import {
     ListItem,
     ListItemText
 } from "@material-ui/core";
-import {lightTheme} from "./Theme";
 import {Link} from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu'
 
@@ -68,28 +67,28 @@ const useStyles = makeStyles(theme => ({
             marginLeft: 'auto'
         },
         tab: {
-            ...lightTheme.typography.tab,
+            ...theme.typography.tab,
             minWidth: 10,
             marginLeft: "25px",
         },
         button: {
-            ...lightTheme.typography.estimate,
+            ...theme.typography.estimate,
             borderRadius: "50px",
             marginLeft: "50px",
             marginRight: "25px",
             height: "45px",
             "&:hover": {
-                backgroundColor: lightTheme.palette.secondary.light
+                backgroundColor: theme.palette.secondary.light
             }
 
         },
         menu: {
-            backgroundColor: lightTheme.palette.common.blue,
+            backgroundColor: theme.palette.common.blue,
             color: "white",
             borderRadius: "0px"
         },
         menuItem: {
-            ...lightTheme.typography.tab,
+            ...theme.typography.tab,
             opacity: 0.7,
             "&:hover": {
                 opacity: 1
@@ -103,15 +102,15 @@ const useStyles = makeStyles(theme => ({
             height: "50px"
         },
         drawer: {
-            backgroundColor: lightTheme.palette.common.blue
+            backgroundColor: theme.palette.common.blue
         },
         drawerItem: {
-            ...lightTheme.typography.tab,
+            ...theme.typography.tab,
             color: "white",
             opacity: 0.7
         },
         drawerItemEstimate: {
-            backgroundColor: lightTheme.palette.common.orange
+            backgroundColor: theme.palette.common.orange
         },
         drawerItemSelected: {
             "& .MuiListItemText-root": {
@@ -280,7 +279,7 @@ export default function Header(props) {
     )
 
     return (
-        <ThemeProvider theme={lightTheme}>
+        <ThemeProvider theme={theme}>
             <ElevationScroll>
                 <AppBar position='fixed' className={classes.appBar}>
                     <Toolbar disableGutters>

@@ -4,7 +4,6 @@ import {Grid, Hidden, IconButton, makeStyles, Typography, useMediaQuery, useThem
 import Lottie from "react-lottie";
 import backArrow from "../assets/backArrow.svg";
 import forwardArrow from "../assets/forwardArrow.svg";
-import {lightTheme} from "./ui/Theme";
 import integrationAnimation from '../animations/integrationAnimation/data.json'
 import swiss from '../assets/swissKnife.svg'
 import access from '../assets/extendAccess.svg'
@@ -14,19 +13,19 @@ import CallToAction from "./ui/CallToAction";
 
 const useStyles = makeStyles(theme => ({
     typo: {
-        ...lightTheme.typography.h2
+        ...theme.typography.h2
     }, typo1: {
-        ...lightTheme.typography.h4
+        ...theme.typography.h4
     }, typo2: {
-        ...lightTheme.typography.subtitle1
+        ...theme.typography.subtitle1
     }, sub2: {
-        ...lightTheme.typography.subtitle2
+        ...theme.typography.subtitle2
     }, heading: {
         maxWidth: "40em"
     }, arrowContainer: {
         marginTop: "0.5em"
     }, body1: {
-        fontSize: "1.25rem", color: lightTheme.palette.third.main, fontWeight: "300"
+        fontSize: "1.25rem", color: theme.palette.third.main, fontWeight: "300"
     }, rowContainer: {
         paddingLeft: "5em", paddingRight: "5em", [theme.breakpoints.down("sm")]: {
             paddingLeft: "1.5em", paddingRight: "1.5em"
@@ -92,10 +91,12 @@ export default function MobileApps(props) {
                     </Grid>
                 </Hidden>
             </Grid>
-            <Grid item container direction={matchesSM ? "column" : "row"} className={classes.rowContainer} style={{marginTop:"15em", marginBottom:"15em"} }>
+            <Grid item container direction={matchesSM ? "column" : "row"} className={classes.rowContainer}
+                  style={{marginTop: "15em", marginBottom: "15em"}}>
                 <Grid item container directiom="column" md>
                     <Grid item>
-                        <Typography align={matchesSM ? "center" : undefined} className={classes.typo1} gutterBottom>Integrations</Typography>
+                        <Typography align={matchesSM ? "center" : undefined} className={classes.typo1}
+                                    gutterBottom>Integrations</Typography>
                         <Typography align={matchesSM ? "center" : undefined} className={classes.body1} paragraph>
                             Our technology enables an innate interconnection between web and mobile applications,
                             putting everything you need right in one convenient place.
@@ -107,21 +108,25 @@ export default function MobileApps(props) {
                     </Grid>
                 </Grid>
                 <Grid item md>
-                    <Lottie options={defaultOptions} style={{maxWidth:"20em"}}/>
+                    <Lottie options={defaultOptions} style={{maxWidth: "20em"}}/>
                 </Grid>
                 <Grid item container directiom="column" md>
                     <Grid item>
-                        <Typography align={matchesSM ? "center" : "right"} className={classes.typo1} gutterBottom>Simultaneous Platform Support</Typography>
+                        <Typography align={matchesSM ? "center" : "right"} className={classes.typo1} gutterBottom>Simultaneous
+                            Platform Support</Typography>
                         <Typography align={matchesSM ? "center" : "right"} className={classes.body1} paragraph>
-                            Our cutting-edge development process allows us to create apps for iPhone, Android, and tablets — all at the same time.
+                            Our cutting-edge development process allows us to create apps for iPhone, Android, and
+                            tablets — all at the same time.
                         </Typography>
                         <Typography align={matchesSM ? "center" : "right"} className={classes.body1} paragraph>
-                            This significantly reduces costs and creates a more unified brand experience across all devices.
+                            This significantly reduces costs and creates a more unified brand experience across all
+                            devices.
                         </Typography>
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item container direction={matchesMD ? "column" : "row"} style={{marginBottom:"15em"}} className={classes.rowContainer}>
+            <Grid item container direction={matchesMD ? "column" : "row"} style={{marginBottom: "15em"}}
+                  className={classes.rowContainer}>
                 <Grid item container direction="column" alignItems="center" md>
                     <Grid item>
                         <Typography align="center" className={classes.typo1} gutterBottom>
@@ -132,14 +137,15 @@ export default function MobileApps(props) {
                         <img src={swiss} alt="swiss army knife"/>
                     </Grid>
                 </Grid>
-                <Grid item container direction="column" alignItems="center" style={{marginTop: matchesMD ? "10em" : 0, marginBottom: matchesMD ? "10em" : 0 }} md>
+                <Grid item container direction="column" alignItems="center"
+                      style={{marginTop: matchesMD ? "10em" : 0, marginBottom: matchesMD ? "10em" : 0}} md>
                     <Grid item>
                         <Typography align="center" className={classes.typo1} gutterBottom>
                             Extend Access
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <img src={access} alt="tear-one-off sign" style={{maxWidth: matchesXS ? "20em":"28em"}}/>
+                        <img src={access} alt="tear-one-off sign" style={{maxWidth: matchesXS ? "20em" : "28em"}}/>
                     </Grid>
                 </Grid>
                 <Grid item container direction="column" alignItems="center" md>
@@ -153,9 +159,9 @@ export default function MobileApps(props) {
                     </Grid>
                 </Grid>
             </Grid>
-        <Grid item >
-            <CallToAction setValue={props.setValue}/>
-        </Grid>
+            <Grid item>
+                <CallToAction setValue={props.setValue}/>
+            </Grid>
         </Grid>
     )
 }

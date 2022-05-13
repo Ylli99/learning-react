@@ -1,6 +1,6 @@
 import React from 'react'
 import {Avatar, Grid, makeStyles, Typography, useTheme, useMediaQuery, Hidden} from "@material-ui/core";
-import {lightTheme} from "./ui/Theme";
+import {theme} from "./ui/Theme";
 import pen from '../assets/history.svg'
 import profile from '../assets/founder.jpg'
 import yearbook from '../assets/yearbook.svg'
@@ -9,26 +9,26 @@ import CallToAction from "./ui/CallToAction";
 
 const useStyles = makeStyles(theme => ({
     typo: {
-        ...lightTheme.typography.h2
+        ...theme.typography.h2
     }, missionStatement: {
-        ...lightTheme.typography.h2,
+        ...theme.typography.h2,
         fontStyle: "italic",
         fontWeight: 300,
         fontSize: "1.5rem",
         maxWidth: "50em",
         lineHeight: 1.4
     }, typo1: {
-        ...lightTheme.typography.h4
+        ...theme.typography.h4
     }, typo2: {
-        ...lightTheme.typography.subtitle1
+        ...theme.typography.subtitle1
     }, sub2: {
-        ...lightTheme.typography.subtitle2
+        ...theme.typography.subtitle2
     }, rowContainer: {
         paddingLeft: "5em", paddingRight: "5em", [theme.breakpoints.down("sm")]: {
             paddingLeft: "1.5em", paddingRight: "1.5em"
         }
     }, body1: {
-        fontSize: "1.25rem", color: lightTheme.palette.third.main, fontWeight: "300"
+        fontSize: "1.25rem", color: theme.palette.third.main, fontWeight: "300"
     },
     avatar: {
         height: "25em",
@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     caption: {
-        ...lightTheme.typography.caption
+        ...theme.typography.caption
     }
 }))
 

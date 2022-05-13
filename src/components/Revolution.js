@@ -1,6 +1,5 @@
 import React from 'react'
-import {Grid, makeStyles, Typography, useTheme, useMediaQuery} from "@material-ui/core";
-import {lightTheme} from "./ui/Theme";
+import {Grid, makeStyles, Typography, useMediaQuery, useTheme} from "@material-ui/core";
 import Lottie from "react-lottie";
 
 import vision from '../assets/vision.svg'
@@ -17,15 +16,15 @@ import CallToAction from "./ui/CallToAction";
 
 const useStyles = makeStyles(theme => ({
     typo1: {
-        ...lightTheme.typography.h4
+        ...theme.typography.h4
     }, rowContainer: {
         paddingLeft: "5em", paddingRight: "5em", [theme.breakpoints.down("sm")]: {
             paddingLeft: "1.5em", paddingRight: "1.5em"
         }
     }, body1: {
-        fontSize: "1.25rem", color: lightTheme.palette.third.main, fontWeight: "300"
+        fontSize: "1.25rem", color: theme.palette.third.main, fontWeight: "300"
     }, rev: {
-        ...lightTheme.typography.revolution
+        ...theme.typography.revolution
     }
 }))
 
@@ -47,13 +46,19 @@ export default function Revolution(props) {
                 The Revolution
             </Typography>
         </Grid>
-        <Grid className={classes.rowContainer} item container direction={matchesMD ? "column" : "row"} alignItems="center" style={{marginTop:"5em"}}>
+        <Grid className={classes.rowContainer} item container direction={matchesMD ? "column" : "row"}
+              alignItems="center" style={{marginTop: "5em"}}>
             <Grid item lg>
-                <img src={vision} alt="mountain through binoculars" style={{maxWidth: matchesSM ? 300 :"40em", marginRight: matchesMD ? 0 : "5em", marginBottom: matchesMD ? "5em" : 0}}/>
+                <img src={vision} alt="mountain through binoculars" style={{
+                    maxWidth: matchesSM ? 300 : "40em",
+                    marginRight: matchesMD ? 0 : "5em",
+                    marginBottom: matchesMD ? "5em" : 0
+                }}/>
             </Grid>
             <Grid item container direction="column" lg style={{maxWidth: "40em"}}>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : "right"} className={classes.typo1} gutterBottom>Vision</Typography>
+                    <Typography align={matchesMD ? "center" : "right"} className={classes.typo1}
+                                gutterBottom>Vision</Typography>
                 </Grid>
                 <Grid item>
                     <Typography align={matchesMD ? "center" : "right"} className={classes.body1} paragraph>
@@ -71,7 +76,7 @@ export default function Revolution(props) {
                         predict the future is to be the one building it, and we want to help guide the world into
                         this next chapter of technological expansion, exploration, and innovation.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : "right"}  className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : "right"} className={classes.body1} paragraph>
                         By holding ourselves to rigorous standards and pristine quality, we can ensure you have the
                         absolute best tools necessary to thrive in this new frontier.
                     </Typography>
@@ -83,10 +88,12 @@ export default function Revolution(props) {
                 </Grid>
             </Grid>
         </Grid>
-        <Grid className={classes.rowContainer} item container direction={matchesMD ? "column" : "row"} alignItems="center" style={{marginTop:"10em", marginBottom:"10em"}}>
+        <Grid className={classes.rowContainer} item container direction={matchesMD ? "column" : "row"}
+              alignItems="center" style={{marginTop: "10em", marginBottom: "10em"}}>
             <Grid item container direction="column" lg style={{maxWidth: "40em"}}>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} className={classes.typo1} gutterBottom>Technology</Typography>
+                    <Typography align={matchesMD ? "center" : undefined} className={classes.typo1}
+                                gutterBottom>Technology</Typography>
                 </Grid>
                 <Grid item>
                     <Typography align={matchesMD ? "center" : undefined} className={classes.body1} paragraph>
@@ -138,21 +145,25 @@ export default function Revolution(props) {
               style={{backgroundColor: "#B3B3B3", height: "90em"}}>
             <Grid item container direction="column" alignItems={matchesMD ? "center" : undefined} lg>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}} className={classes.typo1}
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}}
+                                className={classes.typo1}
                                 gutterBottom>Consultation</Typography>
                 </Grid>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         Our process begins the moment you realize you need a piece of technology for your business.
                         Whether you already have an idea for where to start and what to do, or if you just know you
                         want to step things up, our initial consultation will help you examine your business
                         holistically to find the best solutions.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         Detailed notes will be taken on your requirements and constraints, while taking care to
                         identify other potential areas for consideration.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         Cutting-edge advancements in machine learning like object detection and natural language
                         processing allow computers to do things previously unimaginable, and our expertise and
                         intuition will help usher you into this new future of possibilities.
@@ -167,20 +178,24 @@ export default function Revolution(props) {
               style={{backgroundColor: "#FF7373", height: "90em"}}>
             <Grid item container direction="column" alignItems={matchesMD ? "center" : undefined} lg>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}} className={classes.typo1}
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}}
+                                className={classes.typo1}
                                 gutterBottom>Mockup</Typography>
                 </Grid>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         After we settle on the best path forward and decide on a solution to pursue, details like the
                         cost and timeline will be finalized.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         Then it’s time for us to start on your minimum viable product. That’s just a fancy term for a
                         mockup, which doesn’t include colors, images, or any other polished design elements, but
                         captures the essential layout structure and functionality.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         This helps us understand and refine the solution itself before getting distracted by specifics
                         and looks.
                     </Typography>
@@ -194,20 +209,24 @@ export default function Revolution(props) {
               style={{backgroundColor: "#39B54A", height: "90em"}}>
             <Grid item container direction="column" alignItems={matchesMD ? "center" : undefined} lg>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}} className={classes.typo1}
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}}
+                                className={classes.typo1}
                                 gutterBottom>Review</Typography>
                 </Grid>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         Before moving any farther we come back to you with our progress. This gives you the freedom to
                         discuss any changes you may want or any ideas you may have come up with before any heavy lifting
                         has been done.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         We give you an interactive demonstration of the mockups, thoroughly explaining the thought
                         process that went into each screen and every anticipated feature.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         Once you’re completely satisfied with the vision for our solution we get down to the nitty
                         gritty, fine-details of design.
                     </Typography>
@@ -221,16 +240,19 @@ export default function Revolution(props) {
               style={{backgroundColor: "#A67C52", height: "90em"}}>
             <Grid item container direction="column" alignItems={matchesMD ? "center" : undefined} lg>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}} className={classes.typo1}
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}}
+                                className={classes.typo1}
                                 gutterBottom>Design</Typography>
                 </Grid>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         Using the mockups and notes taken during the consultation as guides, we will start ironing out
                         what the final product will look like. This also involves using any brand material like fonts,
                         colors, and logos to extend the experience you’re already familiar with.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         No aspect is superfluous, and care will be taken with every decision.
                     </Typography>
                 </Grid>
@@ -243,15 +265,18 @@ export default function Revolution(props) {
               style={{backgroundColor: "#39B54A", height: "90em"}}>
             <Grid item container direction="column" alignItems={matchesMD ? "center" : undefined} lg>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}} className={classes.typo1}
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}}
+                                className={classes.typo1}
                                 gutterBottom>Review</Typography>
                 </Grid>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         A second round of review is essential to our goal of creating exactly what you want, exactly how
                         you want it.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         This time we’ll be going over the finalized designs in another fully interactive demonstration.
                         Again this gives you an opportunity to tweak things and make sure we get everything right the
                         first time.
@@ -266,27 +291,33 @@ export default function Revolution(props) {
               style={{backgroundColor: "#FBB03B", height: "90em"}}>
             <Grid item container direction="column" alignItems={matchesMD ? "center" : undefined} lg>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}} className={classes.typo1}
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}}
+                                className={classes.typo1}
                                 gutterBottom>Build</Typography>
                 </Grid>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         Here’s where we get down to business.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         Engineering begins after your approval on the final designs. We start by scaffolding out the
                         project on a high level, prioritizing some areas over others.', 'Each area is then developed in
                         order of importance until ready to be connected to the next piece.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         Typically the backend, behind the scenes operations are completed first. Once all the services
                         are in place we can then create the front end, user side of things.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         Finishing the application doesn’t mean we’re done though, because we use extensive testing to
                         guarantee compatibility with all intended devices.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         Only after our rigorous examinations will we accept a product as finished, then pushing it
                         through the production pipeline. This produces an optimized, compressed, consumer version of the
                         code and assets ready for deployment.
@@ -294,26 +325,31 @@ export default function Revolution(props) {
                 </Grid>
             </Grid>
             <Grid item lg style={{alignSelf: "center"}}>
-                <img src={build} alt="building construction site" width="100%" style={{maxWidth: matchesMD ? 700 : 1000}}/>
+                <img src={build} alt="building construction site" width="100%"
+                     style={{maxWidth: matchesMD ? 700 : 1000}}/>
             </Grid>
         </Grid>
         <Grid item container direction={matchesMD ? "column" : "row"} className={classes.rowContainer}
               style={{backgroundColor: "#C1272D", height: "90em"}}>
             <Grid item container direction="column" alignItems={matchesMD ? "center" : undefined} lg>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}} className={classes.typo1}
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}}
+                                className={classes.typo1}
                                 gutterBottom>Launch</Typography>
                 </Grid>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         The moment we’ve all been waiting for.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         When construction comes to a close you’re the first one to know. We’ll give our final
                         demonstration to show off your shiny new software in the wild so you know exactly how it will
                         look to your users.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         When you say the word, we press the button and launch your project out to the public. We’re
                         there to ensure everything goes to plan so you can start reaping the rewards of your
                         technological investment immediately.
@@ -328,18 +364,22 @@ export default function Revolution(props) {
               style={{backgroundColor: "#8E45CE", height: "90em"}}>
             <Grid item container direction="column" alignItems={matchesMD ? "center" : undefined} lg>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}} className={classes.typo1}
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}}
+                                className={classes.typo1}
                                 gutterBottom>Maintain</Typography>
                 </Grid>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         Our work doesn’t end there.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         After a successful launch we keep in close contact to listen to feedback and hear how the
                         project is being received.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         From there on out we make sure your application is kept up to date and taking advantage of the
                         best features and practices available. When new developments arise or new techniques are
                         discovered in future projects, we will implement those advancements in your project as part of
@@ -355,20 +395,24 @@ export default function Revolution(props) {
               style={{backgroundColor: "#29ABE2", height: "90em"}}>
             <Grid item container direction="column" lg>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}} className={classes.typo1}
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}}
+                                className={classes.typo1}
                                 gutterBottom>Iterate</Typography>
                 </Grid>
                 <Grid item>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         The cycle repeats whenever you come up with a new idea for extending your current project, or
                         come up with a brand new system entirely.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         By planning for future features and changes we can build and evolve your application over time.
                         As new use cases and customer needs develop we can respond with continuous integration of new
                         content.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}} className={classes.body1} paragraph>
+                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                                className={classes.body1} paragraph>
                         Our iterative process will keep you current and competitive, allowing you to quickly implement
                         changes instead of waiting months for a single update.
                     </Typography>
