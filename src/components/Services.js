@@ -148,7 +148,7 @@ export default function Services(props) {
             </Grid>
             <Grid item container direction="row">
                 <Hidden mdDown>
-                    <Grid item style={{marginLeft: "4.5em", marginRight: "5em"}}>
+                    <Grid item style={{marginLeft: "4.3em", marginRight: "5em"}}>
                         <Grid item className={classes.arrowContainer}>
                             <IconButton onClick={() => props.setSelectedIndex(3)}
                                         style={{backgroundColor: "transparent"}}
@@ -158,7 +158,7 @@ export default function Services(props) {
                         </Grid>
                     </Grid>
                     <Grid item>
-                        <Grid item className={classes.arrowContainer}>
+                        <Grid item className={classes.arrowContainer} style={{marginLeft: "0.9em"}}>
                             <IconButton onClick={() => props.setSelectedIndex(1)}
                                         style={{backgroundColor: "transparent"}}
                                         component={Link} to="/customsoftware">
