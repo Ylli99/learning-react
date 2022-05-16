@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, Grid, makeStyles, TextField, Typography, useMediaQuery, useTheme} from "@material-ui/core"
+import {Button, Grid, makeStyles, TextField, Typography, useMediaQuery, useTheme, Dialog, DialogContent} from "@material-ui/core"
 import {Link} from "react-router-dom"
 import background from "../assets/background.jpg";
 import phoneIcon from '../assets/phone.svg'
@@ -167,6 +167,10 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.common.orange,
         "&:hover": {
             backgroundColor: theme.palette.secondary.light
+        },
+        [theme.breakpoints.down("sm")]: {
+            height: 40,
+            width: 225
         }
     }
 }))
@@ -176,11 +180,59 @@ export default function Contact(props) {
     const theme = useTheme();
     const matchesMD = useMediaQuery(theme.breakpoints.down("md"))
     const matchesSM = useMediaQuery(theme.breakpoints.down("sm"))
+    const matchesXS = useMediaQuery(theme.breakpoints.down("xs"))
+
 
     const [name, setName] = useState("")
+
     const [email, setEmail] = useState("")
+    const [emailHelper, setEmailHelper] = useState("")
+
     const [phone, setPhone] = useState("")
+    const [phoneHelper, setPhoneHelper] = useState("")
+
     const [message, setMessage] = useState("")
+
+    const [open, setOpen] = useState(false)
+
+    const onChange = event => {
+        let valid;
+
+        switch (event.target.id) {
+            case 'email':
+                setEmail(event.target.value)
+                valid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(event.target.value)
+
+                if(!valid) {
+                    setEmailHelper("Invalid email")
+                } else {
+                    setEmailHelper("")
+                }
+
+                break;
+
+            case 'phone':
+                setPhone(event.target.value)
+                valid = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(event.target.value)
+
+                if(!valid){
+                    setPhoneHelper("Invalid phone")
+                } else {
+                    setPhoneHelper("")
+                }
+                break;
+
+            default:
+                break;
+        }
+
+        const onConfirm = () => {
+            axios.get().then(res => console.log(res)).catch(err => console.log(err))
+
+        }
+
+    }
+
 
     return (
         <Grid item container direction="row">
@@ -198,8 +250,8 @@ export default function Contact(props) {
                             </Grid>
                             <Grid item>
                                 <Typography className={classes.body1}
-                                            style={{color: theme.palette.common.blue, fontSize: "1rem"}}>(555)
-                                    555-5555</Typography>
+                                            style={{color: theme.palette.common.blue, fontSize: "1rem"}}><a href="tel:5555555555" style={{textDecoration: "none", color: "inherit"}}>(555)
+                                    555-5555</a></Typography>
                             </Grid>
                         </Grid>
                         <Grid item container style={{marginBottom: "2em"}}>
@@ -210,29 +262,58 @@ export default function Contact(props) {
                                 <Typography className={classes.body1} style={{
                                     color: theme.palette.common.blue,
                                     fontSize: "1rem"
-                                }}>zachary@gmail.com</Typography>
+                                }}><a href="mailto:zachary@gmail.com" style={{textDecoration: "none", color: "inherit"}}>zachary@gmail.com</a></Typography>
                             </Grid>
                         </Grid>
                         <Grid item container direction="column" style={{maxWidth:"20em"}}>
                             <Grid item style={{marginBottom:"0.5em"}}>
-                                <TextField error helperText="Please enter a name" fullWidth label="Name" id="name" value={name} onChange={(event) => setName(event.target.value)}></TextField>
+                                <TextField fullWidth label="Name" id="name" value={name} onChange={(event) => setName(event.target.value)}></TextField>
                             </Grid>
                             <Grid item style={{marginBottom:"0.5em"}}>
-                                <TextField fullWidth label="Email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}></TextField>
+                                <TextField fullWidth label="Email" id="email" value={email} helperText={emailHelper} error={emailHelper.length !== 0} onChange={onChange}></TextField>
                             </Grid>
                             <Grid item style={{marginBottom:"0.5em"}}>
-                                <TextField fullWidth label="Phone" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)}></TextField>
+                                <TextField fullWidth label="Phone" id="phone" value={phone} helperText={phoneHelper} error={phoneHelper.length !== 0} onChange={onChange}></TextField>
                             </Grid>
                         </Grid>
                         <Grid item style={{maxWidth:"20em"}}>
                             <TextField fullWidth InputProps={{disableUnderline: true}} className={classes.message} multiline rows={10} value={message} id="message" onChange={(e) => setMessage(e.target.value)}></TextField>
                         </Grid>
                         <Grid item container justify="center" style={{marginTop:"2em"}}>
-                            <Button className={classes.sendButton} variant="contained">Send Message <img style={{marginLeft:"1em"}} src={airplane} alt="paper airplane"/></Button>
+                            <Button onClick={() => setOpen(true)} disabled={name.length === 0 || message.length === 0 || phoneHelper.length !== 0 || emailHelper.length !== 0} className={classes.sendButton} variant="contained">Send Message<img style={{marginLeft:"1em"}} src={airplane} alt="paper airplane"/></Button>
                         </Grid>
                     </Grid>
                 </Grid>
             </Grid>
+            <Dialog fullScreen={matchesXS} style={{zIndex: 1302}} open={open} onClose={() => setOpen(false)} PaperProps={{style: {paddingTop: matchesXS ? "1em" : "5em", paddingBottom:matchesXS ? "1em" : "5em", paddingLeft:matchesXS ? 0 : matchesSM ? "5em" : matchesMD ? " 10em" : "20em", paddingRight:matchesXS ? 0 : matchesSM ? "5em" : matchesMD ? " 10em" : "20em" }}}>
+                <DialogContent>
+                    <Grid container direction="column">
+                        <Grid item>
+                            <Typography align="center" variant="h4" gutterBottom>Confirm Message</Typography>
+                        </Grid>
+                            <Grid item style={{marginBottom:"0.5em"}}>
+                                <TextField fullWidth label="Name" id="name" value={name} onChange={(event) => setName(event.target.value)}></TextField>
+                            </Grid>
+                            <Grid item style={{marginBottom:"0.5em"}}>
+                                <TextField fullWidth label="Email" id="email" value={email} helperText={emailHelper} error={emailHelper.length !== 0} onChange={onChange}></TextField>
+                            </Grid>
+                            <Grid item style={{marginBottom:"0.5em"}}>
+                                <TextField fullWidth label="Phone" id="phone" value={phone} helperText={phoneHelper} error={phoneHelper.length !== 0} onChange={onChange}></TextField>
+                            </Grid>
+                            <Grid item style={{maxWidth:matchesXS ? "100%" : "20em"}}>
+                                <TextField fullWidth InputProps={{disableUnderline: true}} className={classes.message} multiline rows={10} value={message} id="message" onChange={(e) => setMessage(e.target.value)}></TextField>
+                            </Grid>
+                    </Grid>
+                    <Grid item container style={{marginTop: "2em"}} direction={matchesSM ? "column" : "row"} alignItems="center">
+                        <Grid item>
+                            <Button style={{fontWeight:300}} color="primary" onClick={() => setOpen(false)}>Cancel</Button>
+                        </Grid>
+                        <Grid item>
+                            <Button onClick={onConfirm} disabled={name.length === 0 || message.length === 0 || phoneHelper.length !== 0 || emailHelper.length !== 0} className={classes.sendButton} variant="contained">Send Message<img style={{marginLeft:"1em"}} src={airplane} alt="paper airplane"/></Button>
+                        </Grid>
+                    </Grid>
+                </DialogContent>
+            </Dialog>
             <Grid item container justify={matchesMD ? "center" : undefined} direction={matchesMD ? "column" : "row"} className={classes.background} alignItems="center" lg={8} xl={9}>
                 <Grid item style={{marginLeft: matchesMD ? 0 : "3em", textAlign: matchesMD ? "center" : "inherit"}}>
                     <Grid container direction="column">
