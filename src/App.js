@@ -12,6 +12,7 @@ import Websites from "./components/Websites";
 import Revolution from "./components/Revolution";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Estimate from "./components/Estimate"
 
 function App() {
     const [selectedIndex, setSelectedIndex] = useState(0);
@@ -40,7 +41,8 @@ function App() {
                            element={<About setValue={setValue} setSelectedIndex={setSelectedIndex}/>}/>
                     <Route exact path="/contact"
                            element={<Contact setValue={setValue} setSelectedIndex={setSelectedIndex}/>}/>
-                    <Route exact path="/estimate" element={<div>Estimate</div>}/>
+                    <Route exact path="/estimate"
+                           element={<Estimate setValue={setValue} setSelectedIndex={setSelectedIndex}/>}/>
                 </Routes>
                 <Footer setValue={setValue}
                         setSelectedIndex={setSelectedIndex}/>

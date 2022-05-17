@@ -24,6 +24,8 @@ export default createMuiTheme({
             fontFamily: "Pacifico", fontSize: "2.5rem", color: arcBlue
         }, h4: {
             fontFamily: "Raleway", fontSize: "1.75rem", color: arcBlue, fontWeight: 700
+        }, h6: {
+                fontFamily: "Raleway", color: arcBlue, fontWeight: 500, lineHeight: 1
         }, revolution: {
             fontFamily: "Pacifico", fontSize: "2.425rem", color: arcBlue, fontWeight: 700
         }, subtitle1: {

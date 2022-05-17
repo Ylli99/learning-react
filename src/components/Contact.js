@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, Grid, makeStyles, TextField, Typography, useMediaQuery, useTheme, Dialog, DialogContent} from "@material-ui/core"
+import {Snackbar, CircularProgress, Button, Grid, makeStyles, TextField, Typography, useMediaQuery, useTheme, Dialog, DialogContent} from "@material-ui/core"
 import {Link} from "react-router-dom"
 import background from "../assets/background.jpg";
 import phoneIcon from '../assets/phone.svg'
@@ -9,6 +9,7 @@ import ButtonArrow from "./ui/ButtonArrow";
 import revolutionBackground from "../assets/repeatingBackground.svg";
 import infoBackground from "../assets/infoBackground.svg";
 import mobileBackground from '../assets/mobileBackground.jpg'
+import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
     typo1: {
@@ -195,6 +196,11 @@ export default function Contact(props) {
 
     const [open, setOpen] = useState(false)
 
+    const [loading, setLoading] = useState(false)
+
+    const [alert, setAlert] = useState({open: false, message: "", backgroundColor:""})
+
+
     const onChange = event => {
         let valid;
 
@@ -225,14 +231,34 @@ export default function Contact(props) {
             default:
                 break;
         }
-
-        const onConfirm = () => {
-            axios.get().then(res => console.log(res)).catch(err => console.log(err))
-
-        }
-
     }
 
+    const onConfirm = () => {
+        setLoading(true)
+        axios.get('https://us-central1-material-ui-course-7eb18.cloudfunctions.net/sendMail', {params:  {
+                name: name,
+                email: email,
+                phone: phone,
+                message: message
+            }}).then(res => {
+            setLoading(false)
+            setOpen(false)
+            setName("")
+            setEmail("")
+            setPhone("")
+            setMessage("")
+            setAlert({open: true, message: "Message sent successfully!", backgroundColor: "#4BB543"} )
+        }).catch(err => {
+            setLoading(false)
+            setAlert({open: true, message: "Something went wront, please try again!", backgroundColor: "#FF3232"})});
+    };
+
+    const buttonContents = (
+        <React.Fragment>
+            Send Message
+            <img style={{marginLeft:"1em"}} src={airplane} alt="paper airplane"/>
+        </React.Fragment>
+    )
 
     return (
         <Grid item container direction="row">
@@ -280,7 +306,7 @@ export default function Contact(props) {
                             <TextField fullWidth InputProps={{disableUnderline: true}} className={classes.message} multiline rows={10} value={message} id="message" onChange={(e) => setMessage(e.target.value)}></TextField>
                         </Grid>
                         <Grid item container justify="center" style={{marginTop:"2em"}}>
-                            <Button onClick={() => setOpen(true)} disabled={name.length === 0 || message.length === 0 || phoneHelper.length !== 0 || emailHelper.length !== 0} className={classes.sendButton} variant="contained">Send Message<img style={{marginLeft:"1em"}} src={airplane} alt="paper airplane"/></Button>
+                            <Button onClick={() => setOpen(true)} disabled={name.length === 0 || message.length === 0 || phoneHelper.length !== 0 || emailHelper.length !== 0} className={classes.sendButton} variant="contained">{buttonContents}</Button>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -309,11 +335,12 @@ export default function Contact(props) {
                             <Button style={{fontWeight:300}} color="primary" onClick={() => setOpen(false)}>Cancel</Button>
                         </Grid>
                         <Grid item>
-                            <Button onClick={onConfirm} disabled={name.length === 0 || message.length === 0 || phoneHelper.length !== 0 || emailHelper.length !== 0} className={classes.sendButton} variant="contained">Send Message<img style={{marginLeft:"1em"}} src={airplane} alt="paper airplane"/></Button>
+                            <Button onClick={onConfirm} disabled={name.length === 0 || message.length === 0 || phoneHelper.length !== 0 || emailHelper.length !== 0} className={classes.sendButton} variant="contained">{loading ? <CircularProgress size={30}/> : buttonContents}</Button>
                         </Grid>
                     </Grid>
                 </DialogContent>
             </Dialog>
+            <Snackbar open={alert.open} message={alert.message} ContentProps={{style: {backgroundColor: alert.backgroundColor}}} anchorOrigin={{vertical:"top",horizontal:"center"}} onClose={() => setAlert({...alert, open: false})} autoHideDuration={4000}/>
             <Grid item container justify={matchesMD ? "center" : undefined} direction={matchesMD ? "column" : "row"} className={classes.background} alignItems="center" lg={8} xl={9}>
                 <Grid item style={{marginLeft: matchesMD ? 0 : "3em", textAlign: matchesMD ? "center" : "inherit"}}>
                     <Grid container direction="column">
