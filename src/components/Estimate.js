@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import Lottie from 'react-lottie'
 import {
-    textField,
     Dialog,
     DialogContent,
     Button,
@@ -641,6 +640,10 @@ export default function Estimate(props) {
         </Grid>
     )
 
+    const sendEstimate = () => {
+
+    }
+
     return (
         <Grid container direction="row">
             <Grid item container direction="column" lg alignItems={matchesMD ? "center" : undefined}>
@@ -745,7 +748,7 @@ export default function Estimate(props) {
                                 </Grid>
                             </Hidden>
                             <Grid item>
-                                <Button variant="contained" className={classes.estimateButton}>
+                                <Button variant="contained" className={classes.estimateButton} onClick={sendEstimate}>
                                     Place Request
                                     <img src={send} alt="paper airplane" style={{marginLeft:"0.5em"}}/>
                                 </Button>
