@@ -291,7 +291,7 @@ export default function Contact(props) {
                                 }}><a href="mailto:zachary@gmail.com" style={{textDecoration: "none", color: "inherit"}}>zachary@gmail.com</a></Typography>
                             </Grid>
                         </Grid>
-                        <Grid item container direction="column" style={{maxWidth:"20em"}}>
+                        <Grid item container direction="column" style={{width:"20em"}}>
                             <Grid item style={{marginBottom:"0.5em"}}>
                                 <TextField fullWidth label="Name" id="name" value={name} onChange={(event) => setName(event.target.value)}></TextField>
                             </Grid>
@@ -302,7 +302,7 @@ export default function Contact(props) {
                                 <TextField fullWidth label="Phone" id="phone" value={phone} helperText={phoneHelper} error={phoneHelper.length !== 0} onChange={onChange}></TextField>
                             </Grid>
                         </Grid>
-                        <Grid item style={{maxWidth:"20em"}}>
+                        <Grid item style={{width:"20em"}}>
                             <TextField fullWidth InputProps={{disableUnderline: true}} className={classes.message} multiline rows={10} value={message} id="message" onChange={(e) => setMessage(e.target.value)}></TextField>
                         </Grid>
                         <Grid item container justify="center" style={{marginTop:"2em"}}>
@@ -311,7 +311,7 @@ export default function Contact(props) {
                     </Grid>
                 </Grid>
             </Grid>
-            <Dialog fullScreen={matchesXS} style={{zIndex: 1302}} open={open} onClose={() => setOpen(false)} PaperProps={{style: {paddingTop: matchesXS ? "1em" : "5em", paddingBottom:matchesXS ? "1em" : "5em", paddingLeft:matchesXS ? 0 : matchesSM ? "5em" : matchesMD ? " 10em" : "20em", paddingRight:matchesXS ? 0 : matchesSM ? "5em" : matchesMD ? " 10em" : "20em" }}}>
+            <Dialog fullScreen={matchesSM} style={{zIndex: 1302}} open={open} onClose={() => setOpen(false)} PaperProps={{style: {paddingTop: matchesXS ? "1em" : "5em", paddingBottom:matchesXS ? "1em" : "5em", paddingLeft:matchesXS ? 0 : matchesSM ? "5em" : matchesMD ? " 15em" : "25em", paddingRight:matchesXS ? 0 : matchesSM ? "5em" : matchesMD ? " 15em" : "25em" }}}>
                 <DialogContent>
                     <Grid container direction="column">
                         <Grid item>
@@ -326,7 +326,7 @@ export default function Contact(props) {
                             <Grid item style={{marginBottom:"0.5em"}}>
                                 <TextField fullWidth label="Phone" id="phone" value={phone} helperText={phoneHelper} error={phoneHelper.length !== 0} onChange={onChange}></TextField>
                             </Grid>
-                            <Grid item style={{maxWidth:matchesXS ? "100%" : "20em"}}>
+                            <Grid item style={{width:matchesSM ? "100%" : "20em"}}>
                                 <TextField fullWidth InputProps={{disableUnderline: true}} className={classes.message} multiline rows={10} value={message} id="message" onChange={(e) => setMessage(e.target.value)}></TextField>
                             </Grid>
                     </Grid>
