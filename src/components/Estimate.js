@@ -9,7 +9,7 @@ import {
     makeStyles,
     Typography,
     useTheme,
-    TextField, useMediaQuery, Hidden
+    TextField, useMediaQuery, Hidden, Snackbar, CircularProgress
 } from '@material-ui/core'
 import { cloneDeep } from 'lodash'
 
@@ -39,6 +39,7 @@ import check from '../assets/check.svg'
 import send from '../assets/send.svg'
 
 import estimateAnimation from "../animations/estimateAnimation/data.json";
+import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
     icon: {
@@ -353,6 +354,10 @@ export default function Estimate(props) {
     const [category, setCategory] = useState("")
     const [users, setUsers] = useState("")
 
+    const [loading, setLoading] = useState(false)
+
+    const [alert, setAlert] = useState({open: false, message: "", backgroundColor:""})
+
 
     const defaultOptions = {
         loop: true,
@@ -642,6 +647,43 @@ export default function Estimate(props) {
 
     const sendEstimate = () => {
 
+        setLoading(true)
+        axios.get('https://us-central1-material-ui-course-7eb18.cloudfunctions.net/sendMail', {params:  {
+                name: name,
+                email: email,
+                phone: phone,
+                message: message
+            }}).then(res => {
+            setLoading(false)
+            setAlert({
+                open: true,
+                message: "Estimate placed successfully!",
+                backgroundColor: "#4BB543"
+            });
+            setDialogOpen(false)
+        }).catch(err => {
+            setLoading(false)
+            setAlert({open: true, message: "Something went wrong, please try again!", backgroundColor: "#FF3232"})});
+    };
+
+    const estimateDisabled = () => {
+        let disabled = true
+
+        const emptySelections = questions.map(question => question.options.filter(option => option.selected)).filter(question => question.length === 0)
+
+        if (questions.length === 2) {
+            if (emptySelections.length === 1) {
+                disabled = false;
+            }
+        } else if (questions.length === 1){
+            disabled = true;
+        } else if (emptySelections.length < 3 &&
+            questions[questions.length-1].options.filter(option => option.selected).length > 0) {
+            disabled = false;
+        }
+
+
+        return disabled;
     }
 
     return (
@@ -699,13 +741,13 @@ export default function Estimate(props) {
                     </Grid>
                 </Grid>
                 <Grid item>
-                    <Button onClick={() => {
+                    <Button disabled={estimateDisabled()} onClick={() => {
                         setDialogOpen(true);
                         getTotal();
                         getPlatforms();
                         getFeatures();
                         getCustomFeatures();
-                        getCategory()
+                        getCategory();
                     }} variant="contained" className={classes.estimateButton}>
                         Get Estimate
                     </Button>
@@ -732,12 +774,12 @@ export default function Estimate(props) {
                                 <TextField fullWidth label="Phone" id="phone" value={phone} helperText={phoneHelper} error={phoneHelper.length !== 0} onChange={onChange}></TextField>
                             </Grid>
                             <Grid item style={{maxWidth:"20em"}}>
-                                <TextField fullWidth InputProps={{disableUnderline: true}} className={classes.message} multiline rows={10} value={message} id="message" onChange={(e) => setMessage(e.target.value)}></TextField>
+                                <TextField fullWidth InputProps={{disableUnderline: true}} placeholder="Tell us more about your project" className={classes.message} multiline rows={10} value={message} id="message" onChange={(e) => setMessage(e.target.value)}></TextField>
                             </Grid>
                             <Grid item>
-                                <Typography variant="subtitle1"  align={matchesSM ? "center" : undefined}>We can create this digital solution for an estimated
+                                <Typography variant="subtitle1"  align="center" style={{lineHeight: 1.25}}>We can create this digital solution for an estimated
                                     <span className={classes.specialText}>${total}</span> </Typography>
-                                <Typography variant="subtitle1" paragraph align={matchesSM ? "center" : undefined}>Fill out your name, number, and email, place your request,
+                                <Typography variant="subtitle1" paragraph align="center">Fill out your name, number, and email, place your request,
                                     and we’ll get back to you with details moving forward and a final price.</Typography>
                             </Grid>
                         </Grid>
@@ -748,9 +790,11 @@ export default function Estimate(props) {
                                 </Grid>
                             </Hidden>
                             <Grid item>
-                                <Button variant="contained" className={classes.estimateButton} onClick={sendEstimate}>
-                                    Place Request
-                                    <img src={send} alt="paper airplane" style={{marginLeft:"0.5em"}}/>
+                                <Button disabled={name.length === 0 || message.length === 0 || phoneHelper.length !== 0 || emailHelper.length !== 0} variant="contained" className={classes.estimateButton} onClick={sendEstimate}>
+                                    {loading ? <CircularProgress/> : <React.Fragment>
+                                        Place Request
+                                        <img src={send} alt="paper airplane" style={{marginLeft:"0.5em"}}/>
+                                    </React.Fragment>}
                                 </Button>
                             </Grid>
                             <Hidden mdUp>
@@ -764,6 +808,7 @@ export default function Estimate(props) {
                     </Grid>
                 </DialogContent>
             </Dialog>
+            <Snackbar open={alert.open} message={alert.message} ContentProps={{style: {backgroundColor: alert.backgroundColor}}} anchorOrigin={{vertical:"top",horizontal:"center"}} onClose={() => setAlert({...alert, open: false})} autoHideDuration={4000}/>
         </Grid>
     )
 

@@ -303,7 +303,7 @@ export default function Contact(props) {
                             </Grid>
                         </Grid>
                         <Grid item style={{width:"20em"}}>
-                            <TextField fullWidth InputProps={{disableUnderline: true}} className={classes.message} multiline rows={10} value={message} id="message" onChange={(e) => setMessage(e.target.value)}></TextField>
+                            <TextField fullWidth InputProps={{disableUnderline: true}} className={classes.message} placeholder="Tell us more about your project" multiline rows={10} value={message} id="message" onChange={(e) => setMessage(e.target.value)}></TextField>
                         </Grid>
                         <Grid item container justify="center" style={{marginTop:"2em"}}>
                             <Button onClick={() => setOpen(true)} disabled={name.length === 0 || message.length === 0 || phoneHelper.length !== 0 || emailHelper.length !== 0} className={classes.sendButton} variant="contained">{buttonContents}</Button>
