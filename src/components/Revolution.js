@@ -33,6 +33,7 @@ export default function Revolution(props) {
     const theme = useTheme()
     const matchesSM = useMediaQuery(theme.breakpoints.down("sm"))
     const matchesMD = useMediaQuery(theme.breakpoints.down("md"))
+    const matchesXS = useMediaQuery(theme.breakpoints.down("xs"))
 
     const defaultOptions = {
         loop: true, autoplay: false, animationData: technologyAnimation, rendererSettings: {
@@ -202,7 +203,7 @@ export default function Revolution(props) {
                 </Grid>
             </Grid>
             <Grid item lg style={{alignSelf: "center"}}>
-                <img src={mockup} alt="basic website design outline" width="100%" style={{maxWidth: 1000}}/>
+                <img src={mockup} alt="basic website design outline" width="100%" style={{maxWidth: 1000, marginTop: matchesMD ? (matchesSM ? "6em" : "3em") : 0}}/>
             </Grid>
         </Grid>
         <Grid item container direction={matchesMD ? "column" : "row"} className={classes.rowContainer}
@@ -233,7 +234,7 @@ export default function Revolution(props) {
                 </Grid>
             </Grid>
             <Grid item lg style={{alignSelf: "center"}}>
-                <img style={{maxWidth: 800}} src={review} width="100%" alt="magnifying glass"/>
+                <img style={{maxWidth: 800, marginTop: matchesMD ? (matchesSM ? "6em" : "3em") : 0}} src={review} width="100%" alt="magnifying glass"/>
             </Grid>
         </Grid>
         <Grid item container direction={matchesMD ? "column" : "row"} className={classes.rowContainer}
@@ -258,7 +259,7 @@ export default function Revolution(props) {
                 </Grid>
             </Grid>
             <Grid item lg style={{alignSelf: "center"}}>
-                <img src={design} width="100%" alt="paintbrush leaving stroke of paint" style={{maxWidth: 1000}}/>
+                <img src={design} width="100%" alt="paintbrush leaving stroke of paint" style={{maxWidth: 1000, marginTop: matchesMD ? (matchesSM ? "6em" : "3em") : 0}}/>
             </Grid>
         </Grid>
         <Grid item container direction={matchesMD ? "column" : "row"} className={classes.rowContainer}
@@ -284,7 +285,7 @@ export default function Revolution(props) {
                 </Grid>
             </Grid>
             <Grid item lg style={{alignSelf: "center"}}>
-                <img src={review} style={{maxWidth: 800}} width="100%" alt="magnifying glass"/>
+                <img src={review} style={{maxWidth: 800, marginTop: matchesMD ? (matchesSM ? "6em" : "3em") : 0}} width="100%" alt="magnifying glass"/>
             </Grid>
         </Grid>
         <Grid item container direction={matchesMD ? "column" : "row"} className={classes.rowContainer}
@@ -326,7 +327,7 @@ export default function Revolution(props) {
             </Grid>
             <Grid item lg style={{alignSelf: "center"}}>
                 <img src={build} alt="building construction site" width="100%"
-                     style={{maxWidth: matchesMD ? 700 : 1000}}/>
+                     style={{maxWidth: matchesMD ? 700 : 1000, marginTop: matchesMD ? (matchesSM ? "3em" : "1.5em") : 0}}/>
             </Grid>
         </Grid>
         <Grid item container direction={matchesMD ? "column" : "row"} className={classes.rowContainer}
@@ -348,7 +349,7 @@ export default function Revolution(props) {
                         demonstration to show off your shiny new software in the wild so you know exactly how it will
                         look to your users.
                     </Typography>
-                    <Typography align={matchesMD ? "center" : undefined} style={{color: "#FFF", maxWidth: "20em"}}
+                    <Typography align={matchesMD ? "center" : undefined } style={{color: "#FFF", maxWidth: "20em"}}
                                 className={classes.body1} paragraph>
                         When you say the word, we press the button and launch your project out to the public. We’re
                         there to ensure everything goes to plan so you can start reaping the rewards of your
@@ -357,7 +358,7 @@ export default function Revolution(props) {
                 </Grid>
             </Grid>
             <Grid item lg style={{alignSelf: "center"}}>
-                <img src={launch} alt="rocket" width="100%" style={{maxWidth: 200}}/>
+                <img src={launch} alt="rocket" width= {matchesXS ? "95%" : "100%"} style={{maxWidth: 200, marginTop: matchesSM ? "1.75em" : 0}}/>
             </Grid>
         </Grid>
         <Grid item container direction={matchesMD ? "column" : "row"} className={classes.rowContainer}
@@ -388,12 +389,12 @@ export default function Revolution(props) {
                 </Grid>
             </Grid>
             <Grid item lg style={{alignSelf: "center"}}>
-                <img src={maintain} width="100%" alt="wrench tightening bolts" style={{maxWidth: 500}}/>
+                <img src={maintain} width="100%" alt="wrench tightening bolts" style={{maxWidth: 500, marginTop: matchesMD ? "3em" : 0}}/>
             </Grid>
         </Grid>
-        <Grid item container direction={matchesMD ? "column" : "row"} className={classes.rowContainer}
+        <Grid item container direction={matchesMD ? "column" : undefined} className={classes.rowContainer}
               style={{backgroundColor: "#29ABE2", height: "90em"}}>
-            <Grid item container direction="column" lg>
+            <Grid item container direction="column" alignItems={matchesMD ? "center" : undefined} lg>
                 <Grid item>
                     <Typography align={matchesMD ? "center" : undefined} style={{color: "#000", marginTop: "5em"}}
                                 className={classes.typo1}
@@ -419,7 +420,7 @@ export default function Revolution(props) {
                 </Grid>
             </Grid>
             <Grid item lg style={{alignSelf: "center"}}>
-                <img src={iterate} width="100%" alt="falling dominos"/>
+                <img src={iterate} width="100%" alt="falling dominos" style={{marginTop: matchesMD ? "3em" : 0}}/>
             </Grid>
         </Grid>
         <Grid item>

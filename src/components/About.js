@@ -1,6 +1,5 @@
 import React from 'react'
 import {Avatar, Grid, makeStyles, Typography, useTheme, useMediaQuery, Hidden} from "@material-ui/core";
-import {theme} from "./ui/Theme";
 import pen from '../assets/history.svg'
 import profile from '../assets/founder.jpg'
 import yearbook from '../assets/yearbook.svg'
